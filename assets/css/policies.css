@@ -1,0 +1,71 @@
+/*
+ * Additional CSS for Policy Pages
+ * File: assets/css/policies.css
+ * This file works WITH main.css
+ */
+
+/* Simple Header for Policy Pages */
+.policy-header {
+    padding: 20px 40px;
+    background-color: rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.policy-header a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Main Content Wrapper for Policy Pages */
+.policy-content-wrapper {
+    background-color: var(--chocolate-cream); /* Ginamit natin ang light color mo */
+    color: var(--text-dark); /* Dark text para madaling basahin */
+    border-radius: 16px;
+    padding: 40px 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* Headings inside the policy wrapper */
+.policy-content-wrapper h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--text-dark);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    border-bottom: 3px solid var(--accent-green); /* Ginamit natin ang green accent mo */
+}
+
+.policy-content-wrapper h2 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* Paragraph text */
+.policy-content-wrapper p {
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* Link Style inside the content */
+.policy-content-wrapper a {
+    color: var(--accent-green);
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.policy-content-wrapper a:hover {
+    filter: brightness(1.2);
+}
+
+/* Simple Footer */
+.policy-footer {
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9rem;
+    color: var(--dim-gray);
+}

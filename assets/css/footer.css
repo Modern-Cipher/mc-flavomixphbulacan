@@ -68,3 +68,43 @@
         padding-bottom: 20px; /* Less padding on mobile */
     }
 }
+
+/*
+ * STYLES FOR FOOTER POLICY LINKS
+*/
+.footer-links {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Space sa pagitan ng links */
+    flex-wrap: wrap; /* Para responsive sa maliliit na screen */
+}
+
+.footer-links a {
+    color: var(--dim-gray); /* Ginamit natin ang existing color mo */
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+}
+
+.footer-links a:hover {
+    color: var(--text-light); /* Magliliwanag kapag tinapat ang mouse */
+    text-decoration: underline;
+}
+
+/* Vertical line separator */
+.footer-links .separator {
+    color: var(--dim-gray);
+    font-size: 0.9em;
+}
+
+/* Itatago natin ang separator sa maliliit na screen kung saan nagbabalot ang mga link */
+@media (max-width: 480px) {
+    .footer-links .separator {
+        display: none;
+    }
+}
