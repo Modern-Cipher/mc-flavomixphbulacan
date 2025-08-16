@@ -1,0 +1,135 @@
+/* Ratings & Reviews Widget — additive only */
+:root {
+  --rw-card-bg: rgba(255,255,255,0.06);
+  --rw-card-border: rgba(255,255,255,0.12);
+  --rw-star: #FFD700;
+}
+
+.reviews-widget {
+  margin-top: 30px;
+}
+
+.section-divider {
+  border-color: rgba(255,255,255,0.15) !important;
+}
+
+.rw-summary {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.rw-avg {
+  background: var(--rw-card-bg);
+  border: 1px solid var(--rw-card-border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+.rw-avg-num {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1;
+}
+.rw-stars {
+  color: var(--rw-star);
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  margin: 6px 0 2px;
+}
+.rw-total {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+}
+.rw-bars .rw-bar {
+  display: grid;
+  grid-template-columns: 56px 1fr 48px;
+  align-items: center;
+  gap: 10px;
+  margin: 6px 0;
+}
+.rw-bars .label {
+  color: rgba(255,255,255,0.9);
+  font-weight: 600;
+}
+.rw-bars .track {
+  height: 10px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.rw-bars .fill {
+  height: 100%;
+  background: var(--accent-green-default);
+  width: 0%;
+}
+.rw-bars .count {
+  color: rgba(255,255,255,0.8);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Controls */
+.rw-controls {
+  margin: 12px 0 8px;
+}
+
+/* List */
+#rwList .rw-item {
+  background: var(--rw-card-bg);
+  border: 1px solid var(--rw-card-border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.rw-item .rw-item-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.rw-item .rw-item-stars {
+  color: var(--rw-star);
+  letter-spacing: 1px;
+  font-size: 1rem;
+}
+.rw-item .rw-item-name {
+  font-weight: 700;
+}
+.rw-item .rw-item-product {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Write form */
+.rw-form .rw-star-input {
+  display: inline-flex;
+  gap: 6px;
+  font-size: 2rem;
+  user-select: none;
+}
+.rw-form .rw-star-input .star {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.35);
+  cursor: pointer;
+  line-height: 1;
+  transition: transform .1s ease, color .2s ease;
+}
+.rw-form .rw-star-input .star.active,
+.rw-form .rw-star-input .star:hover,
+.rw-form .rw-star-input .star:hover ~ .star { /* keep hover behavior minimal */
+  color: var(--rw-star);
+}
+.rw-form .rw-star-input .star:active {
+  transform: scale(0.92);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .rw-summary {
+    grid-template-columns: 1fr;
+  }
+}

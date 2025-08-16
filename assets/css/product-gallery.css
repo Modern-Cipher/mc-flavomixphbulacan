@@ -1,0 +1,286 @@
+/* assets/css/product-gallery.css */
+
+/* This file is for the main Products Gallery section (outside the modal) */
+
+/* Ensure the section takes up appropriate space */
+#products-gallery {
+    padding: 80px 0; /* Consistent padding with other sections */
+    background-color: var(--chocolate-dark); /* Use your theme's background */
+    color: var(--text-light); /* Use your theme's text color */
+}
+
+#products-gallery h2 {
+    text-align: center;
+    margin-bottom: 40px; /* Space below heading */
+}
+
+.product-gallery-container {
+    max-width: 1400px; /* Match page-wrapper max-width */
+    margin: 0 auto;
+    padding: 0 40px; /* Match page-wrapper padding */
+}
+
+/* Style for the gallery search input */
+.gallery-search-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px; /* Limit width for search bar */
+    display: block; /* Make it a block element to center it */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.gallery-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.gallery-search-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.5);
+    border-color: var(--accent-green-default);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Product Cards Layout for Gallery --- */
+
+/* For uniform height in the gallery grid (desktop) */
+#galleryProductCards.row {
+    display: flex; /* Ensure it's a flex container */
+    flex-wrap: wrap; /* Allow wrapping to new rows */
+    align-items: stretch; /* CRITICAL: Make children stretch to uniform height */
+}
+
+/* Desktop (lg) and up: 4 Columns */
+@media (min-width: 992px) { /* Large (lg) screens and up */
+    #galleryProductCards .product-gallery-card-col {
+        flex: 0 0 auto;
+        width: 25%; /* 4 columns on desktop */
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+        display: flex; /* Make column a flex container for its card */
+        align-items: stretch; /* Make card fill height */
+    }
+
+    /* Adjust card aesthetics for 4-column view (smaller cards) */
+    .gallery-card .product-thumbnail-lg {
+        height: 150px;
+        padding: 10px;
+    }
+
+    .gallery-card .product-thumbnail-lg.broken-image {
+        height: 150px;
+        font-size: 24px;
+    }
+
+    .gallery-card .card-body {
+        padding: 10px;
+    }
+
+    .gallery-card .product-label {
+        font-size: 1em;
+    }
+    .gallery-card .product-description {
+        font-size: 0.8em;
+    }
+    .gallery-card .quantity-input {
+        width: 45px;
+        font-size: 0.9em;
+    }
+    .gallery-card .quantity-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1.4em;
+    }
+}
+
+/* Tablets (sm) to small Desktops (md): 2 Columns */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    #galleryProductCards .product-gallery-card-col {
+        flex: 0 0 auto;
+        width: 50%; /* 2 columns for sm and md screens */
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+        display: flex; /* Make column a flex container for its card */
+        align-items: stretch; /* Make card fill height */
+    }
+}
+
+/* Mobile: Default is 1 column (no media query needed here unless overriding larger) */
+/* The general .product-gallery-card-col will be set to 100% width on very small screens in a global mobile media query if needed.
+    For now, we rely on col-12 from JS.
+*/
+
+
+/* General gallery card styling, similar to modal but potentially with some variations */
+.gallery-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%; /* CRITICAL: Ensure all cards in a row have same height */
+}
+
+.gallery-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.gallery-card.selected-product-card {
+    border-color: var(--accent-green-default);
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.5);
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.gallery-card .buy-now-btn {
+    margin-top: auto; /* Push button to the bottom of the card body */
+    border-radius: 50px; /* Keep it rounded */
+}
+
+/* Common card component styles (could be shared or duplicated if minimal difference) */
+/* The following styles are common to both modal and gallery cards if not overridden by specific classes */
+.product-thumbnail-lg { /* Base style, overridden in media queries for gallery/modal */
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+/* ... rest of the common card styles from order-modal.css if not already in main.css ... */
+
+/* Broken image styling for gallery cards */
+.gallery-card .product-thumbnail-lg.broken-image {
+    border: 2px dashed #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+    width: 100%;
+    height: 180px;
+    position: relative;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: #dc3545;
+    font-weight: bold;
+}
+.gallery-card .product-thumbnail-lg.broken-image::after {
+    content: '✖';
+    position: static;
+    transform: none;
+    margin-top: 0;
+    line-height: 1;
+}
+
+/* Quantity controls in gallery cards */
+.gallery-card .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    justify-content: center;
+    width: 100%;
+}
+.gallery-card .quantity-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-green-default);
+    border: none;
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 1.6em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    flex-shrink: 0;
+}
+.gallery-card .quantity-btn:hover:not(:disabled) {
+    background-color: var(--accent-green-dark);
+    transform: scale(1.05);
+}
+.gallery-card .quantity-btn:disabled {
+    background-color: rgba(76, 175, 80, 0.4);
+    cursor: not-allowed;
+    opacity: 1;
+}
+.gallery-card .quantity-btn.minus-btn::before {
+    content: '−';
+}
+.gallery-card .quantity-btn.plus-btn::before {
+    content: '+';
+}
+.gallery-card .quantity-input {
+    width: 60px;
+    text-align: center;
+    -moz-appearance: textfield;
+    border-radius: 4px;
+    padding: 0.4rem 0.3rem;
+    flex-shrink: 0;
+    font-size: 1em;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+}
+.gallery-card .quantity-input::-webkit-outer-spin-button,
+.gallery-card .quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.gallery-card .quantity-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.5);
+    border-color: var(--accent-green-default);
+}
+
+/* --- Mobile Carousel Overrides for Products Gallery --- */
+@media (max-width: 767.98px) { /* Applies to all mobile devices */
+    .product-gallery-container #galleryProductCards {
+        display: flex; /* IMPORTANT: Use flex instead of block for better height control */
+        flex-wrap: nowrap; /* Keep items in a single line */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        scroll-snap-type: x mandatory; /* Snap to items */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        padding-bottom: 15px; /* Space for scrollbar */
+        align-items: stretch; /* CRITICAL: Stretch cards to uniform height */
+    }
+
+    .product-gallery-container #galleryProductCards::-webkit-scrollbar {
+        display: none; /* Hide scrollbar */
+    }
+    .product-gallery-container #galleryProductCards {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    #galleryProductCards .product-gallery-card-col {
+        flex: 0 0 auto; /* Allow sizing based on width, prevent shrinking/growing */
+        width: 85% !important; /* Make each card take up 85% of screen width */
+        max-width: 300px; /* Optional: Limit max width of a single card on mobile */
+        scroll-snap-align: start; /* Snap to the start of each card */
+        margin-right: 15px; /* Space between cards in carousel */
+        white-space: normal; /* Allow content inside card to wrap */
+        display: flex; /* Make column a flex container for its card */
+        align-items: stretch; /* Make card fill height */
+    }
+
+    #galleryProductCards .product-gallery-card-col:last-child {
+        margin-right: 0; /* No margin on the last item */
+    }
+
+    /* Adjust padding of main container for mobile carousel */
+    .product-gallery-container {
+        padding: 0 15px; /* Adjust left/right padding for better edge alignment */
+    }
+}

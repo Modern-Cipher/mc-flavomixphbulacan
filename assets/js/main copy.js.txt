@@ -1,0 +1,118 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.getElementById('main-header');
+  const navbarToggler = document.getElementById('navbar-toggler');
+  const navbarCollapse = document.getElementById('navbar-collapse');
+  const mobileCloseBtn = document.getElementById('mobile-close-btn');
+  const navLinks = navbarCollapse ? navbarCollapse.querySelectorAll('a') : [];
+
+  // Overlay (create once)
+  const overlay = document.createElement('div');
+  overlay.classList.add('overlay');
+  document.body.appendChild(overlay);
+
+  // Tooltips (guarded)
+  if (window.bootstrap?.Tooltip) {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(el => new bootstrap.Tooltip(el));
+  } else {
+    console.warn('Bootstrap Tooltip not loaded.');
+  }
+
+  // Glass header on scroll (guarded)
+  const handleScroll = () => {
+    if (!header) return;
+    if (window.scrollY > 50) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+
+  // Mobile nav toggle (guarded)
+  const toggleNav = () => {
+    if (!navbarCollapse || !navbarToggler) return;
+    navbarToggler.classList.toggle('active');
+    navbarCollapse.classList.toggle('show');
+    overlay.classList.toggle('show');
+    document.body.classList.toggle('no-scroll');
+  };
+
+  navbarToggler?.addEventListener('click', toggleNav);
+  overlay.addEventListener('click', toggleNav);
+  mobileCloseBtn?.addEventListener('click', toggleNav);
+
+  // Close on link click (guarded)
+  const closeNav = () => {
+    if (!navbarCollapse || !navbarToggler) return;
+    if (navbarCollapse.classList.contains('show')) {
+      navbarToggler.classList.remove('active');
+      navbarCollapse.classList.remove('show');
+      overlay.classList.remove('show');
+      document.body.classList.remove('no-scroll');
+    }
+  };
+  navLinks.forEach(link => link.addEventListener('click', closeNav));
+
+  // =========================
+  // GSAP Animations (safe)
+  // =========================
+  const hasGSAP = typeof window.gsap !== 'undefined';
+  const hasScrollTrigger = typeof window.ScrollTrigger !== 'undefined';
+
+  if (hasGSAP && hasScrollTrigger) {
+    const { gsap } = window;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Initial states
+    gsap.set('.hero-text-area, .hero-image, .benefits-title-heading, .benefits-list li', { opacity: 0 });
+    gsap.set('.hero-text-area', { x: -100 });
+    gsap.set('.hero-image', { scale: 0.8, rotate: 0 });
+    gsap.set('.benefits-title-heading, .benefits-list li', { x: 50 });
+
+    const heroTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.hero-section',
+        start: 'top center',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    heroTl.to('.hero-text-area', { opacity: 1, x: 0, duration: 1, ease: 'power2.out' }, 0);
+    heroTl.to('.hero-image', { opacity: 1, scale: 1, rotate: 25, duration: 1.5, ease: 'back.out(1.7)' }, 0.2);
+
+    gsap.to('.hero-image', {
+      y: -20, duration: 2, ease: 'power1.inOut', repeat: -1, yoyo: true, delay: 1.5
+    });
+
+    heroTl.to('.benefits-title-heading', { opacity: 1, x: 0, duration: 0.8, ease: 'power2.out' }, 0.5);
+
+    gsap.to('.benefits-list li', {
+      opacity: 1, x: 0, duration: 0.5, ease: 'power2.out', stagger: 0.1,
+      scrollTrigger: {
+        trigger: '.product-highlights-area',
+        start: 'top center+=50',
+        toggleActions: 'play none none none'
+      }
+    });
+
+    gsap.utils.toArray('#products-section, #blog-posts-section, #customer-testimonials-section, #contact')
+      .forEach(el => {
+        gsap.fromTo(el,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1, y: 0, duration: 1, ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 85%', end: 'bottom top', toggleActions: 'play none none none' }
+          }
+        );
+      });
+  } else {
+    console.warn('GSAP or ScrollTrigger not loaded. Skipping animations.');
+
+    // Fallback: ensure elements are visible without touching GSAP
+    const show = sel => document.querySelectorAll(sel).forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    show('.hero-text-area, .hero-image, .benefits-title-heading, .benefits-list li');
+    show('#products-section, #blog-posts-section, #customer-testimonials-section, #contact');
+  }
+});

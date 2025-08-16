@@ -1,0 +1,614 @@
+/* In your CSS file (e.g., order-modal.css) */
+
+/* Basic Root Variables (assuming these are defined elsewhere in your project) */
+:root {
+    --chocolate-dark: #3a1c0d;
+    --text-light: #f8f9fa;
+    --text-dark: #212529;
+    --accent-green-default: #4CAF50;
+    --accent-green-dark: #388E3C;
+    --bs-gutter-x: 1.5rem; /* Default Bootstrap gutter */
+}
+
+
+/* --- Modal Overrides for Full-Screen and Dark Theme --- */
+.modal-dialog.modal-fullscreen {
+    margin: 0;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    padding: 0;
+}
+
+.modal-content {
+    background-color: var(--chocolate-dark); /* Match your theme */
+    color: var(--text-light); /* Ensure all text inside modal is light */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex; /* Flex container for header, body, footer */
+    flex-direction: column;
+    height: 100%; /* Make modal content fill height */
+    border-radius: 0; /* Full screen, so no border-radius needed */
+}
+
+.modal-header {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0; /* Don't shrink header */
+}
+
+.modal-footer {
+    border-top-color: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0; /* Don't shrink footer */
+    padding: 15px; /* Consistent padding */
+    display: flex;
+    align-items: center; /* Align items vertically in the middle */
+    flex-wrap: wrap; /* Allow buttons to wrap if needed */
+    gap: 10px; /* Default gap between items if not explicitly set by margin */
+}
+
+/* --- Desktop View: Buttons aligned right, grouped with gap --- */
+@media (min-width: 768px) { /* Applies to md (tablet) and lg (desktop) screens */
+    .modal-footer {
+        justify-content: space-between; /* Pushes total to left, buttons to right */
+    }
+
+    .modal-footer .d-flex.w-100 { /* This targets the total amount wrapper */
+        margin-right: auto; /* Pushes total amount to the far left */
+        flex-grow: 1; /* Allows total to take up available space */
+        order: unset; /* Remove any previous order */
+    }
+
+    /* Group buttons together on the right, with desired spacing */
+    .modal-footer button {
+        /* Remove default Bootstrap margins if any, or ensure this overrides */
+        margin-left: 10px; /* Gap between buttons */
+        width: auto; /* Allow buttons to size naturally */
+        order: unset; /* Remove any previous order */
+    }
+    
+    /* Specific overrides for button pairs to ensure correct alignment and internal gap */
+    /* When "Cancel" and "Shipping Details" are visible */
+    .modal-footer #cancelOrderBtn.d-none ~ #shippingDetailsBtn:not(.d-none) {
+        margin-left: 0; /* If Shipping is first, no left margin */
+    }
+    .modal-footer #shippingDetailsBtn.d-none ~ #cancelOrderBtn:not(.d-none) {
+        margin-left: 0; /* If Cancel is first, no left margin */
+    }
+    /* When "Back" and "Place Order" are visible */
+    .modal-footer #backToProductsBtn.d-none ~ #placeOrderBtn:not(.d-none) {
+        margin-left: 0;
+    }
+    .modal-footer #placeOrderBtn.d-none ~ #backToProductsBtn:not(.d-none) {
+        margin-left: 0;
+    }
+
+    /* Ensure that when Cancel/Back are shown together, Cancel/Back is left of Shipping/Place Order with a gap */
+    /* This rule makes sure the first button in the visible group doesn't have a left margin.
+       It's a bit complex with :not(.d-none) and general button selector.
+       Let's simplify: the rightmost button (Shipping/Place Order) will always have a left margin,
+       and the one to its left (Cancel/Back) will not, unless it's the only one.
+    */
+    .modal-footer #shippingDetailsBtn,
+    .modal-footer #placeOrderBtn {
+        margin-left: 10px; /* Always ensure a gap to the left of the green button */
+    }
+    .modal-footer #cancelOrderBtn,
+    .modal-footer #backToProductsBtn {
+        margin-left: 0; /* These are always the first in their pair, so no left margin needed here */
+    }
+}
+
+
+.btn-close {
+    filter: invert(1); /* Makes the X icon white for dark background */
+}
+
+.form-label {
+    color: var(--text-light); /* Make labels white */
+    font-weight: 600; /* Optional: Make labels bolder */
+}
+
+.form-control,
+.form-select {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-light); /* Make input text white */
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23f8f9fa' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 0.75rem center !important;
+    background-size: 16px 12px !important;
+    color: var(--text-light); /* Default text color for selected option */
+}
+
+.form-select option[value=""] {
+    color: #888 !important; /* Dark gray for "Select Province", "Select City", etc. */
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Placeholder text color for regular inputs */
+}
+
+.form-select option {
+    background-color: var(--chocolate-dark); /* Set background to dark for options */
+    color: var(--text-light) !important; /* Force text color to white for options */
+}
+
+.form-select:focus option:checked {
+    background-color: var(--accent-green-dark) !important; /* Highlighted background when selected */
+    color: var(--text-light) !important; /* White text on highlighted background */
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.5);
+    border-color: var(--accent-green-default);
+}
+
+.form-select:disabled {
+    background-color: rgba(255, 255, 255, 0.05); /* Slightly darker disabled background if needed */
+    color: #888; /* Dark gray text for disabled state */
+    opacity: 0.7; /* Keep opacity to show it's disabled */
+}
+.form-select:disabled {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23888' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+}
+
+
+.input-group-text {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--text-light);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-text.text-muted {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.original-price-strike {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.modal-footer .btn-primary {
+    background-color: var(--accent-green-default);
+    border-color: var(--accent-green-default);
+}
+.modal-footer .btn-primary:hover {
+    background-color: var(--accent-green-dark);
+    border-color: var(--accent-green-dark);
+}
+
+#orderTotal {
+    font-weight: 700;
+    color: var(--accent-green-default);
+    font-size: 1.2em;
+}
+
+.badge.bg-success {
+    background-color: var(--accent-green-default) !important;
+    color: var(--text-light) !important;
+}
+.badge.bg-warning {
+    background-color: #ffc107 !important;
+    color: var(--text-dark) !important;
+}
+
+.modal-body .row > .col-12,
+.modal-body .row > .col-md-6,
+.modal-body .row > .col-md-4 {
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    padding-right: calc(var(--bs-gutter-x) * .5);
+}
+
+.search-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-light);
+    border-radius: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.5);
+    border-color: var(--accent-green-default);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.small-scroll-text {
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+.small-scroll-text i {
+    vertical-align: middle;
+}
+
+
+/* --- Product Card Grid and Scroll Area --- */
+.product-cards-scroll-area {
+    max-height: calc(100% - 100px); /* Roughly 100px for search bar + scroll text + top padding */
+    overflow-y: auto; 
+    padding-right: 15px; 
+    padding-bottom: 15px; 
+    
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+
+.product-cards-scroll-area::-webkit-scrollbar {
+    display: none;
+}
+
+
+.product-cards-scroll-area .product-card-col {
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
+
+
+.product-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.product-card.selected-product-card {
+    border-color: var(--accent-green-default);
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.5);
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.product-thumbnail-lg {
+    width: 100%;
+    height: 180px; 
+    object-fit: contain;
+    padding: 15px; 
+    background-color: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.product-thumbnail-lg.broken-image {
+    border: 2px dashed #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+    width: 100%;
+    height: 180px; 
+    position: relative;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px; 
+    color: #dc3545;
+    font-weight: bold;
+}
+.product-thumbnail-lg.broken-image::after {
+    content: '✖';
+    position: static;
+    transform: none;
+    margin-top: 0;
+    line-height: 1;
+}
+
+.product-card .card-body {
+    padding: 15px; 
+}
+
+.product-card .product-label {
+    font-weight: 600;
+    line-height: 1.2;
+    word-break: break-word;
+    font-size: 1.2em; 
+}
+
+.product-price-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-shrink: 0;
+    min-width: fit-content;
+    text-align: left;
+}
+
+.product-card .product-description {
+    font-size: 0.9em; 
+    color: rgba(255, 255, 255, 0.6) !important;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+    margin-top: 10px; 
+    justify-content: center;
+    width: 100%;
+}
+
+.quantity-btn {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-green-default);
+    border: none;
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 1.6em; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    flex-shrink: 0;
+}
+
+.quantity-btn:hover:not(:disabled) {
+    background-color: var(--accent-green-dark);
+    transform: scale(1.05);
+}
+
+.quantity-btn:disabled {
+    background-color: rgba(76, 175, 80, 0.4);
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.quantity-btn.minus-btn::before {
+    content: '−';
+}
+
+.quantity-btn.plus-btn::before {
+    content: '+';
+}
+
+.quantity-input {
+    width: 60px; 
+    text-align: center;
+    -moz-appearance: textfield;
+    border-radius: 4px;
+    padding: 0.4rem 0.3rem; 
+    flex-shrink: 0;
+    font-size: 1em; 
+}
+
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.5);
+    border-color: var(--accent-green-default);
+}
+
+/* --- Modal Sliding Content Sections --- */
+.modal-body {
+    position: relative;
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column;
+    flex-grow: 1; 
+    padding: 0 !important; 
+}
+
+.modal-content-wrapper {
+    display: flex;
+    width: 200%; 
+    height: 100%;
+    transform: translateX(0%); /* Initial state, GSAP will manage */
+}
+
+.order-section {
+    width: 50%; 
+    flex-shrink: 0; 
+    height: 100%;
+    overflow-y: auto; 
+    overflow-x: hidden;
+    
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.order-section::-webkit-scrollbar {
+    display: none;
+}
+
+/* Apply consistent padding inside each section */
+.order-section > div {
+    padding: 1rem; 
+    height: 100%; 
+    box-sizing: border-box; 
+}
+
+/* Specific max-height for the scrolling areas within each section */
+#productCardsContainer {
+    max-height: calc(100% - 130px - 1rem); /* Approx calculation. Adjust if content overflows/empty space */
+}
+
+
+/* --- Product Cards Layout --- */
+/* Mobile: 1 Column */
+@media (max-width: 575.98px) { /* Extra small mobile */
+    .product-cards-scroll-area .product-card-col {
+        width: 100%; /* 1 column on very small mobile */
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+    }
+}
+
+/* Tablets (sm) to small Desktops (md): 2 Columns */
+@media (min-width: 576px) and (max-width: 991.98px) { 
+    .product-cards-scroll-area .product-card-col {
+        flex: 0 0 auto; 
+        width: 50%; /* 2 columns for sm and md screens */
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+    }
+}
+
+/* Desktop (lg) and up: 4 Columns */
+@media (min-width: 992px) { /* Large (lg) screens and up */
+    .product-cards-scroll-area .product-card-col {
+        flex: 0 0 auto; 
+        width: 25%; /* 4 columns on desktop */
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+    }
+
+    /* Adjust card aesthetics for 4-column view (smaller cards) */
+    .product-thumbnail-lg {
+        height: 150px; /* Adjust image height for smaller cards in 4-column layout */
+        padding: 10px;
+    }
+
+    .product-thumbnail-lg.broken-image {
+        height: 150px;
+        font-size: 24px; /* Adjust broken image icon size */
+    }
+
+    .product-card .card-body {
+        padding: 10px; /* Slightly less padding for smaller cards */
+    }
+
+    .product-card .product-label {
+        font-size: 1em; /* Smaller font for tighter layout */
+    }
+    .product-card .product-description {
+        font-size: 0.8em; /* Smaller font for tighter layout */
+    }
+    .quantity-input {
+        width: 45px; /* Adjust input width for tighter layout */
+        font-size: 0.9em;
+    }
+    .quantity-btn {
+        width: 32px; /* Adjust button size */
+        height: 32px;
+        font-size: 1.4em;
+    }
+}
+
+
+/* --- Form Layout Adjustments --- */
+.shipping-info-section .row {
+    margin-left: -7.5px; /* Compensate for column padding */
+    margin-right: -7.5px;
+}
+.shipping-info-section .col-md-6,
+.shipping-info-section .col-md-12,
+.shipping-info-section .col-md-4 {
+    padding-left: 7.5px; /* Consistent padding for columns */
+    padding-right: 7.5px;
+}
+.shipping-info-section .mb-3 {
+    margin-bottom: 1rem !important; /* Standardize margin-bottom for form groups */
+}
+
+
+/* --- Mobile View Adjustments (max-width: 767.98px) --- */
+@media (max-width: 767.98px) { /* Applies to mobile phones */
+    /* Mobile Button Order: Total Top, Shipping/Place Order Middle, Cancel/Back Bottom */
+    .modal-footer {
+        flex-direction: column; /* Stacks items from top to bottom (normal column flow) */
+        align-items: stretch; /* Stretch buttons to full width */
+        padding: 10px; /* Slightly less padding for mobile footer */
+    }
+    .modal-footer button {
+        width: 100%; /* Make buttons full width */
+        margin-bottom: 8px; /* Space between stacked buttons */
+        margin-left: 0; /* Remove left margin on mobile */
+    }
+    .modal-footer button:last-child {
+        margin-bottom: 0; /* No margin after the very last button when stacked */
+    }
+    .modal-footer button:first-of-type { /* First button will have no margin-top if it's the very first element */
+         margin-top: 0;
+    }
+
+    /* Use order property to control visual stacking order when flex-direction is COLUMN */
+    .modal-footer .d-flex.w-100 { /* This is your total amount wrapper */
+        order: 1; /* This will be the visually TOP item in the column */
+        margin-bottom: 15px !important; /* Space below total amount, above buttons */
+        justify-content: space-between; /* Keep total spaced out */
+        width: 100%; /* Ensure it takes full width */
+    }
+
+    #shippingDetailsBtn, #placeOrderBtn {
+        order: 2; /* These will be visually BELOW the Total Amount */
+    }
+    #cancelOrderBtn, #backToProductsBtn {
+        order: 3; /* These will be the visually BOTTOM items, closest to the bottom edge of the modal */
+    }
+
+
+    /* Adjust max-height for product cards container on mobile */
+    #productCardsContainer {
+        max-height: calc(100% - 130px - 1rem); /* Keep consistent calculation for mobile */
+    }
+
+    /* Form layout on mobile should generally be single column, which Bootstrap does by default */
+    .shipping-info-section .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .shipping-info-section .col-md-6,
+    .shipping-info-section .col-md-12,
+    .shipping-info-section .col-md-4 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* --- SweetAlert Custom Styling for Readability and Alignment --- */
+.swal2-popup {
+    background-color: var(--chocolate-dark) !important;
+    color: var(--text-light) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.swal2-title {
+    color: var(--text-light) !important;
+}
+
+.swal2-html-container {
+    color: var(--text-light) !important;
+    text-align: left !important;
+}
+
+.swal2-confirm.swal2-styled {
+    background-color: var(--accent-green-default) !important;
+}
+
+.swal2-cancel.swal2-styled {
+    background-color: #d33 !important;
+}
+
+/* Ensure SweetAlert close button is visible for dark themes */
+.swal2-close {
+    color: var(--text-light) !important; /* Make X white */
+    font-size: 1.5em !important; /* Slightly larger for visibility */
+}
+.swal2-close:hover {
+    color: rgba(255, 255, 255, 0.7) !important; /* Dim on hover */
+}

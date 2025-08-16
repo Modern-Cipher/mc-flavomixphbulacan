@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavo Mix PH Bulacan | Your Daily Dose of Natural Wellness Drink - Boost Immunity & Energy</title>
+
+    <meta name="description" content="Discover Flavo Mix PH Bulacan, your all-natural wellness drink packed with essential nutrients. Boost your immunity, enhance energy, improve mood, and support overall health. Experience the natural goodness for combating fatigue, aiding digestion, and achieving a healthier lifestyle. Order your Flavo Mix today!">
+
+    <meta name="keywords" content="Flavo Mix, Flavo Mix PH, Flavo Mix Bulacan, natural wellness drink, health drink, immune booster, energy drink, natural supplements, food supplement Philippines, healthy lifestyle Bulacan, anti-fatigue drink, mood enhancer, nutrient-rich beverage, antioxidant drink, digestive health, heart health drink, diabetes support drink, weight management drink, glowing skin drink, metabolism booster, bone health drink, organic drink, all-natural ingredients, wellness products Philippines, health products Bulacan, healthy living, vitamin drink, mineral drink, herbal drink, best wellness drink, where to buy Flavo Mix, Flavo Mix benefits">
+
+    <meta name="author" content="Modern Cipher">
+    <meta name="robots" content="index, follow">
+    <meta name="facebook-domain-verification" content="97g57msvhmkpvouk7d9ocdgod4oth2" />
+
+    <meta property="og:title" content="Flavo Mix PH Bulacan | Your Daily Dose of Natural Wellness Drink">
+    <meta property="og:description" content="Discover the all-natural wellness drink packed with essential nutrients. Boost immunity, enhance energy, improve mood, and support overall health.">
+    <meta property="og:image" content="https://www.flavomixphbulacan.shop/assets/images/flavomix-og-image.jpg">
+    <meta property="og:url" content="https://www.flavomixphbulacan.shop/">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="assets/images/flavomixlogo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/flavomixlogo.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/dynamic-sections.css">
+    <link rel="stylesheet" href="assets/css/order-modal.css">
+    <link rel="stylesheet" href="assets/css/product-gallery.css">
+    <link rel="stylesheet" href="assets/css/blog.css">
+    <link rel="stylesheet" href="assets/css/testimonials.css">
+    <link rel="stylesheet" href="assets/css/features-carousel.css">
+    <!-- ADD: Ratings widget styles -->
+    <link rel="stylesheet" href="assets/css/ratings-widget.css">
+</head>
+<body>
+
+    <div class="page-container">
+
+        <header class="main-header" id="main-header">
+            <div class="page-wrapper header-wrapper">
+                <div class="main-header-left">
+                    <a href="/" class="logo">
+                        <div class="brand-logo-circle">
+                            <img src="assets/images/flavomixlogo.png" alt="Flavo Mix Logo" class="brand-logo-img">
+                        </div>
+                        <span class="brand-name-wrapper">
+                            <span class="brand-name-main">Flavo Mix</span>
+                            <span class="brand-name-location">PH Bulacan</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="main-header-right">
+                    <nav class="navbar">
+                        <div class="navbar-collapse" id="navbar-collapse">
+                            <div class="mobile-menu-header">
+                                <button class="mobile-close-btn" id="mobile-close-btn" aria-label="Close navigation">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <a href="#home">Home</a>
+                            <a href="#features-section">Features</a>
+                            <a href="#products-section">Products</a>
+                            <a href="#blog-posts-section">Blog</a>
+                            <a href="#customer-testimonials-section">Testimonials</a>
+                            <a href="#contact">Contact</a>
+                            <a href="#" class="btn btn-green nav-order-btn" data-bs-toggle="modal" data-bs-target="#orderModal">Order Now</a>
+                        </div>
+                    </nav>
+                    <button class="navbar-toggler" id="navbar-toggler" aria-label="Toggle navigation">
+                        <span class="navbar-icon"></span>
+                        <span class="navbar-icon"></span>
+                        <span class="navbar-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <section id="home" class="hero-section page-section"> <div class="hero-background-split"></div>
+
+            <div class="page-wrapper hero-grid-container">
+                <main class="hero-text-area" id="hero-text-area">
+                </main>
+
+                <div class="hero-image-area">
+                    <img src="assets/images/flavo-mix-product.png" alt="Flavo Mix Product" class="hero-image">
+                </div>
+
+                <div id="benefits" class="product-highlights-area">
+                    <h3 class="benefits-title-heading">Flavo Mix Benefits</h3>
+                    <ul class="benefits-list" id="benefits-list-1">
+                    </ul>
+                    <ul class="benefits-list" id="benefits-list-2">
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="features-section" class="page-section">
+            <div class="page-wrapper">
+                <h2>Why Choose Flavo Mix?</h2>
+                <div id="featuresSplide" class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="products-section" class="page-section fade-in">
+            <div class="page-wrapper">
+                <h2>Our Products</h2>
+                <div class="product-gallery-container">
+                    <div class="mb-4">
+                        <input type="text" class="form-control gallery-search-input" id="galleryProductSearch" placeholder="Search for products...">
+                    </div>
+                    <div id="galleryProductCards" class="row">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog-posts-section" class="page-section alt-bg fade-in">
+            <div class="page-wrapper">
+                <h2>Our Blog & Stories</h2>
+                <div class="blog-container">
+                    <div class="mb-4">
+                        <input type="text" class="form-control blog-search-input" id="blogSearch" placeholder="Search blog posts...">
+                    </div>
+                    <div id="blogPostsContainer" class="row">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="customer-testimonials-section" class="page-section fade-in">
+            <div class="page-wrapper">
+                <h2>What Our Customers Say</h2>
+                <div id="testimonialsContainer" class="row">
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page-section alt-bg fade-in">
+             <div class="page-wrapper">
+                 <h2>Contact Us</h2>
+                 <div class="contact-grid">
+                     <form class="bootstrap-form">
+                         <div class="mb-3"><label for="name" class="form-label">Name</label><input type="text" class="form-control" id="name" required></div>
+                         <div class="mb-3"><label for="email" class="form-label">Email</label><input type="email" class="form-control" id="email" required></div>
+                         <div class="mb-3"><label for="message" class="form-label">Message</label><textarea class="form-control" id="message" rows="4" required></textarea></div>
+                         <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                     </form>
+                     <div class="map-placeholder"><p>Google Map will be embedded here.</p></div>
+                 </div>
+
+                 <!-- ADD: Ratings & Reviews widget (purely additive, under contact grid) -->
+                 <hr class="section-divider mt-5 mb-4">
+                 <div id="reviews-widget" class="reviews-widget">
+                    <h3 class="mb-3 text-start text-md-center">Customer Ratings & Reviews</h3>
+
+                    <!-- Summary -->
+                    <div class="rw-summary">
+                        <div class="rw-avg">
+                            <div class="rw-avg-num" id="rwAvgNum">0.0</div>
+                            <div class="rw-stars" id="rwAvgStars" aria-label="Average rating"></div>
+                            <div class="rw-total"><span id="rwTotal">0</span> reviews</div>
+                        </div>
+                        <div class="rw-bars" id="rwBars"></div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="rw-controls row g-3">
+                        <div class="col-12 col-md-4">
+                            <label class="form-label">Filter by stars</label>
+                            <select id="rwFilterStars" class="form-select">
+                                <option value="all" selected>All</option>
+                                <option value="5">5</option>
+                                <option value="4">4 & up</option>
+                                <option value="3">3 & up</option>
+                                <option value="2">2 & up</option>
+                                <option value="1">1 & up</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label class="form-label">Sort</label>
+                            <select id="rwSort" class="form-select">
+                                <option value="newest" selected>Newest</option>
+                                <option value="highest">Highest</option>
+                                <option value="lowest">Lowest</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <label class="form-label">Product</label>
+                            <select id="rwFilterProduct" class="form-select">
+                                <option value="all" selected>All products</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- List -->
+                    <div id="rwList" class="row mt-3"></div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <button id="rwLoadMore" class="btn btn-green d-none">Load more</button>
+                    </div>
+
+                    <!-- Write a review -->
+                    <div class="rw-form mt-4">
+                        <h4 class="mb-2">Leave a Review</h4>
+                        <form id="rwForm" novalidate>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label">Your name (optional)</label>
+                                    <input type="text" id="rwName" class="form-control" placeholder="e.g. Juan D.">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label">Product</label>
+                                    <select id="rwProduct" class="form-select" required></select>
+                                    <div class="invalid-feedback">Please select a product.</div>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label d-block">Your rating</label>
+                                    <div class="rw-star-input" id="rwStarInput" data-value="0" aria-label="Choose rating 1-5">
+                                        <button type="button" class="star" data-star="1">★</button>
+                                        <button type="button" class="star" data-star="2">★</button>
+                                        <button type="button" class="star" data-star="3">★</button>
+                                        <button type="button" class="star" data-star="4">★</button>
+                                        <button type="button" class="star" data-star="5">★</button>
+                                    </div>
+                                    <div class="invalid-feedback d-block" id="rwStarFeedback" style="display:none;">Please add a rating.</div>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Your review</label>
+                                    <textarea id="rwText" class="form-control" rows="4" placeholder="Share something helpful for other customers..." required></textarea>
+                                    <div class="invalid-feedback">Please write a short review.</div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-green" type="submit">Submit Review</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                 </div>
+                 <!-- END Ratings widget -->
+             </div>
+        </section>
+
+        <div class="modal fade" id="orderModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderModalLabel">Place Your Order</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div class="modal-content-wrapper">
+                            <div class="order-section product-selection-section active-section" id="productSelectionSection">
+                                <div class="p-3">
+                                    <h5 class="mt-0 mb-3">Select Your Products</h5>
+
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control search-input" id="productSearch" placeholder="Search for products...">
+                                    </div>
+
+                                    <p class="small-scroll-text text-muted text-center mt-2 mb-3">
+                                        Scroll down to see more products <i class="bi bi-arrow-down"></i>
+                                    </p>
+
+                                    <div id="productCardsContainer" class="product-cards-scroll-area">
+                                        <div id="productSelection" class="row">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="order-section shipping-info-section" id="shippingInfoSection">
+                                <div class="p-3">
+                                    <h5 class="mb-3">Shipping Information</h5>
+                                    <form id="orderForm" class="needs-validation" novalidate>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="firstName" class="form-label">First Name</label>
+                                                <input type="text" class="form-control" id="firstName" placeholder="Juan" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your first name.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="lastName" class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" id="lastName" placeholder="Dela Cruz" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your last name.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="mobileNumber" class="form-label">Mobile Number (e.g., 917xxxxxxx)</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-text">+63</span>
+                                                    <input type="tel" class="form-control" id="mobileNumber" placeholder="9171234567" minlength="10" maxlength="10" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a valid 10-digit mobile number.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="emailAddress" class="form-label">Email Address (Optional)</label>
+                                                <input type="email" class="form-control" id="emailAddress" placeholder="juan.delacruz@example.com">
+                                                <div class="invalid-feedback">
+                                                    Please enter a valid email address.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-12 mb-3">
+                                                <label for="streetAddress" class="form-label">House/Unit No., Street Name, Subdivision, Bldg. Name</label>
+                                                <input type="text" class="form-control" id="streetAddress" placeholder="123 Main St, Brgy. San Juan" required>
+                                                <div class="invalid-feedback">
+                                                    Please enter your complete street address.
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <div class="col-md-4 mb-3">
+                                                <label for="provinceSelect" class="form-label">Province</label>
+                                                <select class="form-select" id="provinceSelect" required>
+                                                    <option value="">Select Province</option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select your province.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="citySelect" class="form-label">City / Municipality</label>
+                                                <select class="form-select" id="citySelect" required disabled>
+                                                    <option value="">Select City / Municipality</option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select your city/municipality.
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="barangaySelect" class="form-label">Barangay</label>
+                                                <select class="form-select" id="barangaySelect" required disabled>
+                                                    <option value="">Select Barangay</option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select your barangay.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-between align-items-center w-100">
+                            <h5>Total Amount:</h5>
+                            <h4 id="orderTotal">₱0.00</h4>
+                        </div>
+                        <button type="button" class="btn btn-secondary" id="cancelOrderBtn" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="shippingDetailsBtn">Shipping Details</button>
+                        <button type="button" class="btn btn-secondary d-none" id="backToProductsBtn">Back</button>
+                        <button type="submit" form="orderForm" class="btn btn-primary d-none" id="placeOrderBtn">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="main-footer">
+            <img src="assets/images/mc.png" alt="Modern Cipher Logo" class="footer-logo"/>
+            <div class="social-icons">
+                <a href="#" id="facebook-link" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" id="tiktok-link" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" id="messenger-link" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Messenger"><i class="fab fa-facebook-messenger"></i></a>
+                <a href="#" id="telegram-link" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram"><i class="fab fa-telegram"></i></a>
+                <a href="#" id="viber-link" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Viber"><i class="fab fa-viber"></i></a>
+                <a href="#" id="gmail-link" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Gmail"><i class="fas fa-envelope"></i></a>
+                <a href="#" id="website-link" class="social-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Website"><i class="fas fa-globe"></i></a>
+            </div>
+
+            <div class="footer-links">
+                <a href="privacy_policy.html">Privacy Policy</a>
+                <span class="separator">|</span>
+                <a href="user_data_deletion.html">Data Deletion Policy</a>
+            </div>
+
+            <p class="footer-credit">Developed by Modern Cipher © 2025</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="module" src="assets/js/firebase-init.js"></script>
+
+    <script src="assets/js/dynamic-content.js"></script>
+    <script src="assets/js/main.js"></script> <script type="module" src="assets/js/order-modal.js"></script>
+    <script type="module" src="assets/js/product-gallery.js"></script>
+    <script type="module" src="assets/js/blog.js"></script>
+    <script type="module" src="assets/js/testimonials.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script type="module" src="assets/js/features-carousel.js"></script>
+
+    <!-- ADD: Ratings widget logic (loads last so it can read window.appProducts, etc.) -->
+    <script type="module" src="assets/js/ratings.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+/* assets/css/testimonials.css */
+
+#testimonials-section {
+    padding: 80px 0;
+    background-color: var(--chocolate-dark); /* Use primary dark background */
+    color: var(--text-light);
+}
+
+#testimonials-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#testimonialsContainer {
+    /* Container for the testimonials grid/carousel */
+    /* For uniform height in the testimonials grid (desktop) */
+    display: flex; /* Ensure it's a flex container */
+    flex-wrap: wrap; /* Allow wrapping to new rows */
+    align-items: stretch; /* CRITICAL: Make children stretch to uniform height */
+}
+
+.testimonial-card-col { /* Added this class for the column div to apply flex properties */
+    /* Adjust these based on your Bootstrap column structure, e.g., col-md-4, col-lg-3 */
+    display: flex; /* Make columns flex containers */
+    align-items: stretch; /* Make card fill height */
+}
+
+.testimonial-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    height: 100%; /* CRITICAL: Ensure uniform height in rows */
+    transition: all 0.2s ease-in-out;
+}
+
+.testimonial-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px); /* Slight lift on hover */
+}
+
+.testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--accent-green-default); /* Green border for avatar */
+}
+
+.testimonial-quote {
+    font-size: 1.1em;
+    font-style: italic;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.testimonial-author {
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.testimonial-source {
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Star Rating (basic example, can be replaced with Font Awesome stars if desired) */
+.testimonial-stars {
+    color: #FFD700; /* Gold color for stars */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.testimonial-stars .fa-star {
+    margin: 0 2px;
+}
+
+
+/* Responsive Column Layout for Testimonials */
+/* Desktop (lg) and up: 3 Columns */
+@media (min-width: 992px) {
+    #testimonialsContainer .testimonial-card-col { /* Targetting specific class here */
+        flex: 0 0 auto;
+        width: 33.333%; /* 3 columns on lg screens and up */
+        padding-left: 7.5px; /* Add padding to columns if needed, assuming Bootstrap gutter setup */
+        padding-right: 7.5px;
+    }
+}
+
+/* Tablets (sm) to small Desktops (md): 2 Columns */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    #testimonialsContainer .testimonial-card-col {
+        flex: 0 0 auto;
+        width: 50%; /* 2 columns on sm and md screens */
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+    }
+}
+/* Mobile: Default is 1 column, relies on col-12 from JS for grid behavior */
+
+
+/* Video Testimonial Specific Styling (similar to blog, but for testimonials) */
+.testimonial-card .video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    background-color: #000;
+    margin-bottom: 15px; /* Space between video and quote */
+}
+
+.testimonial-card .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- Mobile Carousel Overrides for Testimonials --- */
+@media (max-width: 767.98px) { /* Applies to all mobile devices */
+    #testimonialsContainer { /* Target the row containing testimonials */
+        display: flex; /* IMPORTANT: Use flex instead of block for better height control */
+        flex-wrap: nowrap; /* Keep items in a single line */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Keep items in a single line */
+        scroll-snap-type: x mandatory; /* Snap to items */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        padding-bottom: 15px; /* Space for scrollbar */
+        align-items: stretch; /* CRITICAL: Stretch cards to uniform height */
+    }
+
+    #testimonialsContainer::-webkit-scrollbar {
+        display: none; /* Hide scrollbar */
+    }
+    #testimonialsContainer {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    #testimonialsContainer .testimonial-card-col { /* Target the column div for each card */
+        flex: 0 0 auto; /* Allow sizing based on width, prevent shrinking/growing */
+        width: 85% !important; /* Make each card take up 85% of screen width */
+        max-width: 300px; /* Optional: Limit max width of a single card on mobile */
+        scroll-snap-align: start; /* Snap to the start of each card */
+        margin-right: 15px; /* Space between cards in carousel */
+        white-space: normal; /* Allow content inside card to wrap */
+        display: flex; /* Make column a flex container for its card */
+        align-items: stretch; /* Make card fill height */
+    }
+
+    #testimonialsContainer .testimonial-card-col:last-child {
+        margin-right: 0; /* No margin on the last item */
+    }
+
+    /* Adjust padding of main container for mobile carousel */
+    #testimonials-section .page-wrapper {
+        padding: 0 15px; /* Adjust left/right padding for better edge alignment */
+    }
+}

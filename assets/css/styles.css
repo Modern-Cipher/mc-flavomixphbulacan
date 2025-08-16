@@ -1,0 +1,11 @@
+/* Tailwind via CDN handles utility classes. This file is for custom additions. */
+:root { --brand:#e11d48; --dark:#0b1020; --light:#f8fafc; }
+html, body { scroll-behavior: smooth; background: var(--light); }
+.section { padding: 4rem 0; }
+.hero-bg { background: radial-gradient(1200px 600px at 20% -10%, rgba(225,29,72,.25), transparent 60%), linear-gradient(120deg, #0b1020, #121a35); }
+.card { background: white; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+.badge { background: #fee2e2; color: #7f1d1d; border-radius: 9999px; padding: .25rem .75rem; font-weight: 600; font-size: .75rem; }
+.footer-links { display:flex; gap:.5rem; align-items:center; justify-content:center; flex-wrap:wrap; }
+.footer-links .separator { opacity:.5; }
+.gallery img { border-radius: .75rem; }
+.cert-frame { background:white; border-radius: .75rem; padding: .75rem; box-shadow: 0 6px 20px rgba(0,0,0,.06); }

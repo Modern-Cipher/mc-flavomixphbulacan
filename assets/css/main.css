@@ -2,103 +2,598 @@
 :root {
     --chocolate-dark: #3E2723;
     --chocolate-cream: #FFF8E1;
-    --accent-purple: #7B1FA2; /* Gagamitin na lang sa ibang highlights, hindi sa buttons */
-    --accent-green: #4CAF50;  /* Primary action color */
-    --dim-gray: #5f5f5f;       /* Para sa right-side header text */
-    --glass-bg: rgba(255, 255, 255, 0.1);
+    --accent-purple: #1aaa1f; /* This is green, not purple based on usage. Should probably rename to --accent-green */
+    --accent-green-default: #1aaa1f; /* Original green color for buttons and checkmarks */
+    --accent-green-dark: #1aaa1f; /* Darker green for benefits gradient */
+    --accent-green-light: #81C784; /* Lighter green for benefits gradient */
+    --dim-gray: #E0E0E0; /* Lighter gray for better contrast on dark bg */
+    --glass-bg: rgba(46, 30, 25, 0.6); /* Semi-transparent dark bg for glass effect */
     --text-light: #FFFFFF;
     --text-dark: #3E2723;
     --font-primary: 'Poppins', sans-serif;
+    --header-height: 75px; /* ADJUST THIS VALUE BASED ON YOUR ACTUAL HEADER HEIGHT */
+
+    /* New Dark Chocolate for Features Carousel */
+    --dark-chocolate-bg: #2B1C1A; /* A darker shade of chocolate for contrast */
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-primary); background-color: var(--chocolate-dark); color: var(--text-light); }
-.page-container { width: 100%; } /* Changed from .page-wrapper to simplify */
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+body {
+    font-family: var(--font-primary);
+    background-color: var(--chocolate-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+    padding-top: var(--header-height); /* Push content down to avoid fixed header overlap */
+    position: relative;
+    overflow-x: hidden; /* ADDED: Prevents horizontal scroll from carousel */
+}
+.page-container {
+    width: 100%;
+}
+/* IMPORTANT: Reset default browser margins */
+h1, h2, h3, p, ul { margin: 0; padding: 0; }
+
 .page-wrapper { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
 
-/* ---- Buttons ---- */
-.btn { padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; border: none; z-index: 10; }
-.btn-primary { background-color: var(--accent-green); color: var(--text-light); }
-.btn-secondary { background-color: var(--accent-green); color: var(--text-light); }
-.btn:hover { transform: scale(1.05); filter: brightness(1.1); }
+/* ---- Buttons (Generic Styles) ---- */
+.btn {
+    padding: 12px 30px;
+    border-radius: 50px; /* Default rounded for all .btn */
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease; /* Ensure smooth transition for all .btn */
+    border: none;
+    z-index: 10;
+    display: inline-flex; /* Use flex for centering text and padding */
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap; /* Prevent text from wrapping by default */
+}
 
-/* --- SECTION 1: HERO (NEW GRID LAYOUT) --- */
-.hero-background { background: linear-gradient(90deg, var(--chocolate-dark) 55%, var(--chocolate-cream) 45%); }
-.hero-grid-wrapper {
+/* Generic Green Button Style */
+.btn-green {
+    background-color: var(--accent-green-default);
+    color: var(--text-light); /* Text color is always light for green buttons */
+    border: none;
+}
+.btn-green:hover {
+    filter: brightness(1.2); /* Make it brighter on hover */
+    transform: scale(1.05); /* Make it slightly larger on hover */
+    background-color: var(--accent-green-default); /* Explicitly set, just in case */
+    color: var(--text-light); /* Explicitly set, just in case */
+}
+
+/* FIX: Ensure button color is maintained on active/focus/pressed states */
+.btn-green:active,
+.btn-green:focus,
+.btn-green:visited, /* Added visited for completeness, though less common for buttons */
+.btn-green:active:focus { /* Combination of active and focus */
+    background-color: var(--accent-green-dark) !important; /* Use a slightly darker shade on press */
+    color: var(--text-light) !important;
+    filter: brightness(1.1); /* Slightly less bright than hover, but still visible */
+    transform: scale(1.03); /* Slightly less zoom than hover */
+    outline: none !important; /* Remove default blue outline on focus */
+    box-shadow: none !important; /* Remove default shadow on focus if it interferes */
+}
+
+
+/* Specific button styles (now just for IDs) */
+/* Hero section button (no specific styles needed here if .btn and .btn-green are applied in HTML) */
+.btn-secondary#buy-now-btn {
+    /* This ID is primarily for JavaScript interaction or specific GSAP animations */
+}
+
+
+/* --- HEADER (FIXED & GLASSMORPHISM) --- */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 0;
+    background-color: transparent;
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+}
+.main-header.scrolled {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Desktop & Mobile Header Logo & Text Styles */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-light);
+    text-decoration: none;
+}
+.brand-logo-circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+.brand-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
+    transition: filter 0.3s ease;
+}
+.brand-logo-img:hover {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 1));
+}
+
+/* Brand Name Text Styles */
+.brand-name-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    line-height: 1.2;
+}
+.brand-name-main {
+    font-weight: 700;
+    color: var(--text-light);
+}
+.brand-name-location {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9em;
+}
+
+
+/* --- NAVIGATION --- */
+.main-header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between nav links and button */
+}
+.navbar-collapse {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    flex-wrap: nowrap; /* Prevent nav links from wrapping on desktop */
+}
+/* Target regular nav links, exclude buttons */
+.navbar-collapse a:not(.btn) {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+}
+/* Target regular nav links on hover */
+.navbar-collapse a:not(.btn):hover {
+    color: var(--accent-green-default);
+}
+
+/* Style for the "Order Now" button in the navbar (Desktop) */
+.nav-order-btn {
+    padding: 12px 30px; /* Consistent padding with hero button */
+    margin-left: 20px; /* Space it from other nav links */
+    min-width: 120px; /* Ensure it has a minimum width for "pahaba" look */
+    flex-shrink: 0; /* Prevent it from shrinking too much on narrower screens */
+}
+
+
+/* --- HAMBURGER TOGGLER --- */
+.navbar-toggler {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+    transition: opacity 0.3s ease;
+}
+.navbar-icon {
+    width: 30px;
+    height: 3px;
+    background: var(--text-light);
+    border-radius: 5px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+.mobile-close-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    color: var(--text-light);
+    cursor: pointer;
+    z-index: 1003;
+    padding: 0;
+    margin-left: auto;
+    transition: opacity 0.3s ease;
+}
+
+
+/* --- SECTION 1: HERO (REVISED LAYOUT FOR ALIGNMENT AND ANIMATIONS) --- */
+.hero-section {
+    min-height: calc(100vh - var(--header-height));
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-background-split {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--chocolate-dark) 55%, var(--chocolate-cream) 45%);
+    z-index: 0;
+}
+
+.hero-grid-container {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 100px auto 1fr; /* Header, Content, Spacer */
-    min-height: 100vh;
-    position: relative;
+    grid-template-rows: 1fr;
+    align-items: center; /* Vertically aligns ALL direct grid items */
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 40px;
+    margin: 0 auto;
 }
-.main-header-left { grid-column: 1 / span 5; grid-row: 1; display: flex; align-items: center; }
-.logo { display: flex; align-items: center; gap: 15px; font-size: 20px; font-weight: 700; color: var(--text-light); text-decoration: none; }
-.logo-icon { font-size: 24px; color: var(--accent-green); }
-.main-header-right {
-    grid-column: 7 / -1;
-    grid-row: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 25px;
+
+.hero-text-area {
+    grid-column: 1 / span 5;
+    text-align: left;
+    z-index: 2;
+    /* GSAP will handle initial opacity and transform */
 }
-.main-header-right a { color: var(--dim-gray); text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
-.main-header-right a:hover { color: var(--accent-green); }
-.hero-content { grid-column: 1 / span 5; grid-row: 2; align-self: start; z-index: 2; padding-top: 10%; }
-.hero-title { font-size: clamp(2rem, 4.5vw, 4rem); line-height: 1.1; font-weight: 800; }
-.hero-description { font-size: 1.1rem; opacity: 0.9; margin: 25px 0; }
-.hero-image-wrapper { grid-column: 4 / span 6; grid-row: 2 / span 2; align-self: center; z-index: 1; }
-.hero-image { width: 100%; transform: rotate(25deg); filter: drop-shadow(0 20px 30px rgba(0,0,0,0.2)); }
-.product-highlights {
-    grid-column: 10 / -1;
-    grid-row: 2;
+.hero-title {
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    line-height: 1.0em;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+.hero-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.hero-image-area {
+    grid-column: 6 / span 4;
     align-self: center;
-    color: var(--text-dark);
+    z-index: 5;
+
+    /* GSAP will handle initial opacity and transform */
+}
+.hero-image {
+    width: 120%;
+    transform: rotate(25deg); /* This is the desktop slant. GSAP will apply this after initial animation */
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.2));
+    margin-left: -20%;
+}
+.product-highlights-area { /* This is the right side of hero, with benefits list */
+    grid-column: 10 / -1;
+    align-self: center;
+    color: var(--text-dark); /* text-dark if on cream background */
     z-index: 2;
     display: flex;
-    gap: 20px;
-    font-size: 0.9rem;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 0px;
+    gap: 0;
+    text-align: left; /* ensure left */
+    /* GSAP will handle initial opacity and transform */
 }
-.benefits-list { list-style: none; padding: 0; }
-.benefits-list li { padding-left: 25px; position: relative; margin-bottom: 12px; }
-.benefits-list li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--accent-green); position: absolute; left: 0; top: 3px; }
+/* Style for benefits title heading */
+.benefits-title-heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(to right, var(--accent-green-dark), var(--accent-green-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+}
+.benefits-list li {
+    padding-left: 25px;
+    position: relative;
+    margin-bottom: 12px;
+    white-space: normal;
+    /* GSAP will handle initial opacity and transform */
+}
+.benefits-list li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--accent-green-default);
+    position: absolute;
+    left: 0;
+    top: 3px;
+}
 
-/* --- FEATURES, PRODUCTS, BLOG, TESTIMONIALS, CONTACT --- */
-.features-section { padding: 80px 0; }
-.features-section .page-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.glass-card { background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.2); padding: 40px; text-align: center; }
-.feature-number { font-size: 3.5rem; font-weight: 800; color: var(--accent-purple); opacity: 0.7; }
-.glass-card h3 { font-size: 1.7rem; margin-top: 5px; font-weight: 700; }
-.page-section { padding: 80px 0; }
-.page-section h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; text-align: center; }
-.alt-bg { background-color: #331f1a; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; text-align: left; }
+/* --- GLOBAL SECTION STYLES --- */
+.page-section {
+    padding: 80px 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column; /* Ensure content stacks vertically */
+}
+.page-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+/* Alternate background color for sections */
+.alt-bg {
+    background-color: var(--chocolate-dark);
+}
+
+/* --- Contact Section Specific Styles --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+    text-align: left;
+}
 .bootstrap-form .form-label { font-weight: 600; }
 .bootstrap-form .form-control { background-color: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--text-light); }
-.bootstrap-form .form-control:focus { background-color: rgba(255,255,255,0.2); color: var(--text-light); box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.5); }
-.bootstrap-form .btn-primary { background-color: var(--accent-green); }
-.map-placeholder { background-color: rgba(0,0,0,0.2); border-radius: 8px; display: grid; place-items: center; }
+.bootstrap-form .form-control:focus { background-color: rgba(255,255,255,0.2); color: var(--text-light); box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.5); border-color: var(--accent-green-default); }
+.bootstrap-form .btn-primary { background-color: var(--accent-green-default); }
+.bootstrap-form .btn-primary:hover { filter: brightness(1.2); }
+.map-placeholder {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    min-height: 300px;
+}
 
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 1024px) {
     .page-wrapper { padding: 0 20px; }
-    .hero-background { background: var(--chocolate-dark); }
-    .hero-grid-wrapper { display: flex; flex-direction: column; }
-    .main-header-left { order: 1; align-self: center; padding: 20px 0 0 0; }
-    .main-header-right { order: 2; flex-wrap: wrap; justify-content: center; padding: 20px 0; }
-    .hero-content { order: 3; text-align: center; margin-top: 20px; }
-    .hero-image-wrapper { order: 4; width: 80%; margin: 20px auto; transform: rotate(0deg) !important; animation: none !important; }
-    .product-highlights {
-        order: 5;
-        width: 100vw;
-        margin-left: -20px;
-        padding: 40px;
-        background-color: var(--chocolate-cream);
+    /* Hero section for smaller screens (tablet) */
+    .hero-section {
+        min-height: auto;
         flex-direction: column;
+        justify-content: center;
+        padding: 40px 0;
+        background: var(--chocolate-dark);
+    }
+    .hero-background-split {
+        display: none;
+    }
+    .hero-grid-container {
+        display: flex; /* Changed to flexbox for vertical stacking */
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        min-height: auto;
+        grid-template-columns: none; /* Reset grid properties */
+        grid-template-rows: none;
         align-items: center;
+        padding: 0 20px;
+        margin: 0 auto;
+    }
+    .hero-text-area {
+        order: 2; /* Order for mobile layout */
+        text-align: left; /* keep left */
+        grid-column: auto;
+        width: 100%;
+    }
+    .hero-title { line-height: 1.1; margin-bottom: 15px; }
+    .hero-description { margin-bottom: 25px; }
+
+    .hero-image-area {
+        order: 1; /* Order for mobile layout */
+        width: 70%;
+        max-width: 400px;
+        margin: 0 auto;
+        grid-column: auto;
+    }
+    .hero-image {
+        transform: rotate(0deg); /* Reset slant for mobile if you don't want it. */
+        margin-left: -10%;
+    }
+    .product-highlights-area {
+        order: 3; /* Order for mobile layout */
+        width: 100%;
+        background-color: var(--chocolate-cream);
+        color: var(--text-dark);
+        padding: 40px 20px;
+        flex-direction: column;
+        align-items: flex-start;
         text-align: left;
+        border-radius: 16px;
+        grid-column: auto;
+    }
+    .benefits-list:last-child { margin-top: 20px; }
+}
+
+@media (max-width: 768px) {
+    /* Mobile header logo and text */
+    .brand-logo-circle {
+        width: 35px;
+        height: 35px;
+        box-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+    }
+    .brand-name-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        font-size: 1.05rem;
+    }
+    .brand-name-main {
+        font-size: 1em;
+    }
+    .brand-name-location {
+        font-size: 0.8em;
+        line-height: 1;
+    }
+
+    .navbar-toggler {
+        display: flex;
+        z-index: 1002;
+    }
+    .navbar-toggler.active {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        max-width: 300px;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        background-color: var(--chocolate-dark);
+        transition: transform 0.4s ease-in-out;
+        transform: translateX(100%);
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+        overflow-y: auto;
+        z-index: 1001;
+        padding: 0;
+        margin: 0;
+        will-change: transform;
+    }
+    .navbar-collapse.show {
+        transform: translateX(0);
+    }
+
+    /* Mobile Menu Header (only for the close button) */
+    .mobile-menu-header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .mobile-close-btn {
+        display: block;
+        flex-shrink: 0;
+        margin-left: auto;
+    }
+
+    /* Mobile nav links alignment (Regular links) */
+    .navbar-collapse a:not(.btn) {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        font-size: 1.1rem;
+    }
+
+    /* Style for the "Order Now" button in the navbar (Mobile Specific) */
+    .nav-order-btn {
+        width: calc(100% - 40px);
+        max-width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 15px;
+        padding: 12px 30px;
+        border-radius: 50px !important;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Hamburger to X animation */
+    .navbar-toggler.active .navbar-icon:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    .navbar-toggler.active .navbar-icon:nth-child(2) {
+        opacity: 0;
+    }
+    .navbar-toggler.active .navbar-icon:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .contact-grid { grid-template-columns: 1fr; }
+    .page-section { /* Global page section adjustments for mobile */
+        min-height: auto; /* Allow height to adjust to content */
+        padding: 40px 0; /* Consistent padding */
     }
 }
-@media (max-width: 768px) {
-    .contact-grid { grid-template-columns: 1fr; }
+
+/* Overlay for mobile menu */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
 }
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* ========================= */
+/*  HERO LEFT-ALIGN OVERRIDES
+    (Keeps other sections centered)
+   ========================= */
+#home .hero-text-area,
+#home .product-highlights-area,
+#home .benefits-list,
+#home .benefits-list li {
+    text-align: left !important;
+}
+#home .product-highlights-area { align-items: flex-start; }

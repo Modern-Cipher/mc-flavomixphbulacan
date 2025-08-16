@@ -1,0 +1,39 @@
+// document.addEventListener('DOMContentLoaded', () => {
+
+//     const header = document.getElementById('main-header');
+//     const navbarToggler = document.getElementById('navbar-toggler');
+//     const navbarCollapse = document.getElementById('navbar-collapse');
+//     const navLinks = navbarCollapse.querySelectorAll('a');
+
+//     // 1. Add glassmorphism effect on scroll
+//     const handleScroll = () => {
+//         if (window.scrollY > 50) {
+//             header.classList.add('scrolled');
+//         } else {
+//             header.classList.remove('scrolled');
+//         }
+//     };
+
+//     window.addEventListener('scroll', handleScroll);
+
+//     // 2. Toggle mobile navigation
+//     const toggleNav = () => {
+//         navbarToggler.classList.toggle('active');
+//         navbarCollapse.classList.toggle('show');
+//         document.body.classList.toggle('no-scroll');
+//     };
+
+//     navbarToggler.addEventListener('click', toggleNav);
+
+//     // 3. Close mobile nav when a link is clicked
+//     const closeNav = () => {
+//         navbarToggler.classList.remove('active');
+//         navbarCollapse.classList.remove('show');
+//         document.body.classList.remove('no-scroll');
+//     };
+
+//     navLinks.forEach(link => {
+//         link.addEventListener('click', closeNav);
+//     });
+
+// });

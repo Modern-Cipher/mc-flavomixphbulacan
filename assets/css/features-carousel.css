@@ -1,0 +1,106 @@
+/* --- Splide base note ---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+*/
+
+/* SECTION */
+#features-section{
+  padding:80px 0;
+  background:var(--dark-chocolate-bg);
+  color:var(--text-light);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;min-height:100vh;position:relative;z-index:1;
+}
+#features-section h2{font-size:2.5rem;font-weight:700;margin-bottom:40px}
+
+/* SPLIDE CONTAINER
+   -> remove fixed height; Splide heightRatio in JS controls sizing */
+#featuresSplide.splide{
+  width:100%;max-width:1300px;margin:0 auto;overflow:hidden;position:relative;
+}
+
+/* TRACK/LIST */
+.splide__track{position:relative;z-index:0;overflow:visible}
+.splide__list{display:flex;align-items:stretch;justify-content:center;margin:0!important;padding:0!important;height:100%}
+
+/* SLIDE */
+.splide__slide{
+  list-style:none!important;display:flex;align-items:center;justify-content:center;
+  padding:0 32px; box-sizing:border-box; height:100%;
+}
+
+/* ARROWS – let Splide rotate the left arrow (don’t override transform) */
+.splide__arrow{
+  display:flex;align-items:center;justify-content:center;
+  background:var(--accent-green-default);border:none;border-radius:50%;cursor:pointer;
+  height:3em;width:3em;position:absolute;top:50%;transform:translateY(-50%);
+  z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.3);color:#fff;opacity:.9;transition:opacity .3s ease
+}
+.splide__arrow:hover{opacity:1}
+.splide__arrow svg{display:block !important;fill:currentColor !important;width:1.5em !important;height:1.5em !important}
+.splide__arrow::before,.splide__arrow::after{content:none!important}
+.splide__arrow--prev{left:20px}
+.splide__arrow--next{right:20px}
+
+/* DOTS */
+.splide__pagination{
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;
+  position:absolute;left:50%;transform:translateX(-50%);bottom:-40px;z-index:1
+}
+.splide__pagination__page{
+  width:10px;height:10px;border-radius:50%;background:var(--accent-green-default);opacity:.5;transition:opacity .3s, transform .3s
+}
+.splide__pagination__page.is-active{opacity:1;transform:scale(1.2)}
+
+/* CARD */
+.features-carousel-content{
+  position:relative;z-index:1;width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;text-align:center;
+  padding:40px;border-radius:16px;overflow:hidden;
+  background:rgba(60,40,30,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.28);box-shadow:0 8px 32px rgba(0,0,0,.35);color:#fff;
+}
+
+/* TEXT SLIDE */
+.feature-number{font-size:4rem;font-weight:800;color:var(--accent-green-default);opacity:.95}
+.feature-title{font-size:2.2rem;font-weight:700}
+.feature-description{max-width:800px;line-height:1.6;color:rgba(255,255,255,.9)}
+
+/* VIDEO/IMAGE BACKGROUNDS */
+.features-carousel-video-content,
+.features-carousel-image-content{padding:0;justify-content:flex-end;align-items:flex-start;text-align:left}
+.video-container,
+.feature-background-image{position:absolute;inset:0;border-radius:inherit;z-index:-1}
+.video-container{overflow:hidden;background:#000}
+.video-container iframe{
+  position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);pointer-events:none
+}
+.feature-background-image{object-fit:cover}
+.video-text-overlay,.image-text-overlay{position:relative;z-index:2;width:100%;padding:24px 40px;box-sizing:border-box}
+
+/* CERTIFICATIONS */
+.certifications-area-carousel{width:100%;display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:10px}
+.cert-logos{display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+.cert-logo{height:220px;width:auto;object-fit:contain;border-radius:12px;background:#000000cc;padding:8px;box-shadow:0 8px 24px rgba(0,0,0,.35);cursor:pointer}
+
+/* LIGHTBOX */
+.fm-lightbox{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:3000;opacity:0;visibility:hidden;transition:.2s}
+.fm-lightbox.show{opacity:1;visibility:visible}
+.fm-lightbox img{max-width:min(92vw,1100px);max-height:90vh;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
+.fm-lightbox .fm-close{position:absolute;top:20px;right:24px;font-size:28px;line-height:1;background:#00000099;color:#fff;border:none;border-radius:999px;width:42px;height:42px;cursor:pointer}
+
+/* RESPONSIVE */
+@media (max-width:1024px){
+  .splide__slide{padding:0 20px}
+  .cert-logo{height:180px}
+}
+@media (max-width:767.98px){
+  #featuresSplide.splide{max-width:100%;padding:0 14px}
+  .features-carousel-content{padding:22px}
+  .feature-title{font-size:1.6rem}
+  .feature-number{font-size:3rem}
+  .cert-logo{height:150px}
+  .splide__arrow{height:2.5em;width:2.5em}
+  .splide__arrow--prev{left:8px}
+  .splide__arrow--next{right:8px}
+  .splide__pagination{bottom:-30px}
+}
