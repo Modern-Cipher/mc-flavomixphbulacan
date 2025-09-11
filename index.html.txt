@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ronshe Dragons Food Products Trading — Chicharon</title>
+  <meta name="description" content="Ronshe Dragons Food Products Trading. Premium chicharon. Business profile and contact for verification." />
+  <meta name="facebook-domain-verification" content="97g57msvhmkpvouk7d9ocdgod4oth2" />
+  <link rel="icon" type="image/png" href="assets/images/ronshe-dragonsv1.png" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Remix Icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <meta property="og:title" content="Ronshe Dragons Food Products Trading" />
+  <meta property="og:description" content="Certified sole proprietor. Supplier of premium chicharon." />
+  <meta property="og:image" content="assets/images/ronshe-dragonsv1.png" />
+  <meta property="og:type" content="website" />
+</head>
+<body class="text-slate-800">
+  <!-- Header -->
+  <header class="fixed w-full z-40 backdrop-blur bg-white/70 border-b border-slate-200/60">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <img src="assets/images/ronshe-dragonsv1.png" alt="Ronshe Dragons Logo" class="h-10 w-auto rounded-md" />
+        <div class="font-semibold">Ronshe Dragons Food Products Trading</div>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#about" class="hover:text-rose-600">About</a>
+        <a href="#products" class="hover:text-rose-600">Products</a>
+        <a href="#certs" class="hover:text-rose-600">Certification</a>
+        <a href="#contact" class="hover:text-rose-600">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden rounded-xl border px-3 py-2">
+        <i class="ri-menu-line text-xl"></i>
+      </button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden border-t bg-white">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-2 text-sm">
+        <a href="#about" class="py-1">About</a>
+        <a href="#products" class="py-1">Products</a>
+        <a href="#certs" class="py-1">Certification</a>
+        <a href="#contact" class="py-1">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-bg text-white">
+    <div class="max-w-6xl mx-auto px-4 pt-28 pb-20">
+      <span class="badge">Certified Sole Proprietor</span>
+      <h1 class="hero-headline mt-4 text-4xl md:text-6xl font-extrabold leading-tight">
+        Premium Chicharon. Trusted Local Supplier.
+      </h1>
+      <p class="hero-sub mt-4 max-w-2xl text-white/80">
+        Ronshe Dragons Food Products Trading is a registered business engaged in producing and supplying high-quality chicharon.
+      </p>
+      <div class="hero-cta mt-8 flex items-center gap-3">
+        <a href="#contact" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-semibold">
+          <i class="ri-phone-fill"></i><span>Contact</span>
+        </a>
+        <a href="#certs" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 ring-1 ring-white/20 hover:bg-white/20 font-semibold">
+          <i class="ri-shield-check-line"></i><span>Verification</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+      <div data-aos="fade-right" class="order-2 md:order-1">
+        <h2 class="text-2xl md:text-3xl font-bold mb-3">Business Profile</h2>
+        <p class="text-slate-600">
+          Legal name: <span class="font-semibold">Ronshe Dragons Food Products Trading</span>. Primary product: chicharon. Ownership: sole proprietorship. Operating locally with verified registration under the Department of Trade and Industry (Philippines).
+        </p>
+        <ul class="mt-4 space-y-2 text-slate-700">
+          <li class="flex gap-2"><i class="ri-check-line mt-1"></i><span>Consistent quality control and hygienic production</span></li>
+          <li class="flex gap-2"><i class="ri-check-line mt-1"></i><span>Wholesale and retail order fulfillment</span></li>
+          <li class="flex gap-2"><i class="ri-check-line mt-1"></i><span>Responsive logistics within Bulacan and nearby areas</span></li>
+        </ul>
+      </div>
+      <div data-aos="fade-left" class="order-1 md:order-2">
+        <div class="card p-6">
+          <img src="assets/images/ronshe-dragonsv1.png" alt="Brand Logo" class="w-full object-contain bg-slate-50 rounded-xl p-6" />
+          <div class="mt-4 text-sm text-slate-600">Brand mark and identity badge.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="section bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6" data-aos="fade-up">Products</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card p-6" data-aos="zoom-in">
+          <h3 class="font-semibold">Classic Chicharon</h3>
+          <p class="text-sm text-slate-600 mt-2">Crisp pork rind. Balanced salt. Shelf-stable retail packs.</p>
+        </div>
+        <div class="card p-6" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="font-semibold">Spicy Chicharon</h3>
+          <p class="text-sm text-slate-600 mt-2">Chili-infused seasoning for extra heat.</p>
+        </div>
+        <div class="card p-6" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="font-semibold">Garlic Chicharon</h3>
+          <p class="text-sm text-slate-600 mt-2">Roasted garlic profile. Crowd favorite.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certification -->
+  <section id="certs" class="section bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6" data-aos="fade-up">Business Certification</h2>
+      <div class="cert-frame" data-aos="fade-up">
+        <img src="assets/images/certification.png" alt="Certificate of Business Name Registration" class="w-full h-auto" />
+      </div>
+      <p class="mt-3 text-sm text-slate-600">Certificate confirms registration and sole proprietor status.</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10">
+      <div data-aos="fade-right">
+        <h2 class="text-2xl md:text-3xl font-bold">Contact</h2>
+        <div class="mt-4 space-y-2 text-slate-700">
+          <div class="flex gap-2"><i class="ri-map-pin-2-line mt-1"></i><span>0031 FR(FEEDSU) NATIONAL HWAY SAPANG PUTOL SAN ILDEFONSO 3010 BULACAN PHILIPPINES</span></div>
+          <div class="flex gap-2"><i class="ri-phone-line mt-1"></i><span>0995-9441-338</span></div>
+          <div class="flex gap-2"><i class="ri-time-line mt-1"></i><span>Mon–Sat 9:00–18:00</span></div>
+        </div>
+      </div>
+      <div data-aos="fade-left">
+        <form class="card p-6 grid gap-4">
+          <div>
+            <label class="text-sm">Name</label>
+            <input type="text" class="mt-1 w-full rounded-lg border px-3 py-2" placeholder="Your name" />
+          </div>
+          <div>
+            <label class="text-sm">Phone or Email</label>
+            <input type="text" class="mt-1 w-full rounded-lg border px-3 py-2" placeholder="Contact details" />
+          </div>
+          <div>
+            <label class="text-sm">Message</label>
+            <textarea class="mt-1 w-full rounded-lg border px-3 py-2" rows="4" placeholder="Order or inquiry"></textarea>
+          </div>
+          <button type="button" class="rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-semibold px-4 py-2">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t bg-white">
+    <div class="max-w-6xl mx-auto px-4 py-6 text-center text-sm text-slate-600">
+      <div>© <span id="y"></span> Ronshe Dragons Food Products Trading</div>
+      <div class="footer-links mt-2">
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <span class="separator">|</span>
+        <a href="user_data_deletion.html">Data Deletion Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- Custom JS -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
